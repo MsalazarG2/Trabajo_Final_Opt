@@ -51,6 +51,10 @@ def resolver(enlaces, comunicaciones, desactivados=()):
         if not isfinite(demanda) or demanda < 0:
             raise ValueError("Las demandas deben ser finitas y no negativas.")
 
+
+
+    modelo += x[k, [5,8]] =< 4
+
     modelo = pulp.LpProblem("DataNet", pulp.LpMinimize)
     # x[k, i, j] representa el flujo de k por i → j.
     x = {
