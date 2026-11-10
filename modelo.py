@@ -19,7 +19,7 @@ ENLACES_BASE = {
     (4, 5): (2, 10),
     (4, 7): (6, 12),
     (5, 6): (3, 8),
-    (5, 8): (5, 10),
+    (5, 8): (5, 4),
     (6, 7): (2, 10),
     (6, 8): (4, 12),
     (7, 8): (3, 14),
@@ -83,7 +83,6 @@ def resolver(enlaces, comunicaciones, desactivados=()):
     for i, j in enlaces:
         carga = pulp.lpSum(x[k, i, j] for k in comunicaciones)
         modelo += carga <= capacidad_efectiva[i, j], f"Capacidad_{i}_{j}"
-         modelo += carga <= capacidad_efectiva[5, 8], f"4_{i}_{j}"
 
 
     modelo.solve(pulp.PULP_CBC_CMD(msg=False))
