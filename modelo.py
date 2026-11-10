@@ -53,7 +53,7 @@ def resolver(enlaces, comunicaciones, desactivados=()):
 
 
 
-    modelo += x[k, [5,8]] =< 4
+    modelo += x[k, 5, 8] =< 4
 
     modelo = pulp.LpProblem("DataNet", pulp.LpMinimize)
     # x[k, i, j] representa el flujo de k por i → j.
