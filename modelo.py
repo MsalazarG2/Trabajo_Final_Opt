@@ -53,7 +53,6 @@ def resolver(enlaces, comunicaciones, desactivados=()):
 
 
 
-    modelo += x[k, 5, 8] =< 4
 
     modelo = pulp.LpProblem("DataNet", pulp.LpMinimize)
     # x[k, i, j] representa el flujo de k por i → j.
@@ -84,6 +83,8 @@ def resolver(enlaces, comunicaciones, desactivados=()):
     for i, j in enlaces:
         carga = pulp.lpSum(x[k, i, j] for k in comunicaciones)
         modelo += carga <= capacidad_efectiva[i, j], f"Capacidad_{i}_{j}"
+         modelo += carga <= capacidad_efectiva[5, 8], f"4_{i}_{j}"
+
 
     modelo.solve(pulp.PULP_CBC_CMD(msg=False))
     estado = pulp.LpStatus[modelo.status]
