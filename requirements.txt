@@ -1,0 +1,4 @@
+PuLP==3.3.0
+streamlit==1.67.0
+graphviz==0.21
+pandas>=2.2,<4
